@@ -1,0 +1,86 @@
+created:
+    - app/Http/Controllers/Api/TeacherController.php
+    - app/Http/Controllers/Api/DirectionController.php
+    - app/Http/Controllers/Api/StudentController.php
+    - app/Http/Controllers/Api/CourseController.php
+    - app/Http/Controllers/Admin/TeacherController.php
+    - app/Http/Controllers/Admin/DirectionController.php
+    - app/Http/Controllers/Admin/StudentController.php
+    - app/Http/Controllers/Admin/CourseController.php
+    - database/factories/StudentFactory.php
+    - database/factories/CourseFactory.php
+    - database/factories/DirectionFactory.php
+    - database/factories/TeacherFactory.php
+    - database/factories/CourseTeacherFactory.php
+    - database/factories/CourseStudentFactory.php
+    - database/factories/CourseDirectionFactory.php
+    - database/factories/TeacherStudentFactory.php
+    - database/factories/TeacherDirectionFactory.php
+    - database/migrations/2022_11_01_051549_create_students_table.php
+    - database/migrations/2022_11_01_051550_create_courses_table.php
+    - database/migrations/2022_11_01_051551_create_directions_table.php
+    - database/migrations/2022_11_01_051552_create_teachers_table.php
+    - database/migrations/2022_11_01_051553_create_course_teachers_table.php
+    - database/migrations/2022_11_01_051554_create_course_students_table.php
+    - database/migrations/2022_11_01_051555_create_course_directions_table.php
+    - database/migrations/2022_11_01_051556_create_teacher_students_table.php
+    - database/migrations/2022_11_01_051557_create_teacher_directions_table.php
+    - database/migrations/2022_11_01_051558_create_student_teacher_table.php
+    - database/migrations/2022_11_01_051559_create_course_student_table.php
+    - database/migrations/2022_11_01_051600_create_course_teacher_table.php
+    - database/migrations/2022_11_01_051601_create_course_direction_table.php
+    - database/migrations/2022_11_01_051602_create_direction_teacher_table.php
+    - app/Models/Student.php
+    - app/Models/Course.php
+    - app/Models/Direction.php
+    - app/Models/Teacher.php
+    - app/Models/CourseTeacher.php
+    - app/Models/CourseStudent.php
+    - app/Models/CourseDirection.php
+    - app/Models/TeacherStudent.php
+    - app/Models/TeacherDirection.php
+    - tests/Feature/Http/Controllers/Api/TeacherControllerTest.php
+    - tests/Feature/Http/Controllers/Api/DirectionControllerTest.php
+    - tests/Feature/Http/Controllers/Api/StudentControllerTest.php
+    - tests/Feature/Http/Controllers/Api/CourseControllerTest.php
+    - tests/Feature/Http/Controllers/Admin/TeacherControllerTest.php
+    - tests/Feature/Http/Controllers/Admin/DirectionControllerTest.php
+    - tests/Feature/Http/Controllers/Admin/StudentControllerTest.php
+    - tests/Feature/Http/Controllers/Admin/CourseControllerTest.php
+    - app/Http/Requests/Admin/TeacherStoreRequest.php
+    - app/Http/Requests/Admin/TeacherUpdateRequest.php
+    - app/Http/Requests/Admin/DirectionStoreRequest.php
+    - app/Http/Requests/Admin/DirectionUpdateRequest.php
+    - app/Http/Requests/Admin/StudentStoreRequest.php
+    - app/Http/Requests/Admin/StudentUpdateRequest.php
+    - app/Http/Requests/Admin/CourseStoreRequest.php
+    - app/Http/Requests/Admin/CourseUpdateRequest.php
+    - app/Http/Resources/Api/TeacherCollection.php
+    - app/Http/Resources/Api/TeacherResource.php
+    - app/Http/Resources/Api/DirectionCollection.php
+    - app/Http/Resources/Api/DirectionResource.php
+    - app/Http/Resources/Api/StudentCollection.php
+    - app/Http/Resources/Api/StudentResource.php
+    - app/Http/Resources/Api/CourseCollection.php
+    - app/Http/Resources/Api/CourseResource.php
+    - app/Http/Resources/Admin/TeacherCollection.php
+    - app/Http/Resources/Admin/TeacherResource.php
+    - app/Http/Resources/Admin/DirectionCollection.php
+    - app/Http/Resources/Admin/DirectionResource.php
+    - app/Http/Resources/Admin/StudentCollection.php
+    - app/Http/Resources/Admin/StudentResource.php
+    - app/Http/Resources/Admin/CourseCollection.php
+    - app/Http/Resources/Admin/CourseResource.php
+updated:
+    - routes/api.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable' }
+    Student: { id: increments, name: string, image: string, description: text, relationships: { belongsToMany: 'Teacher, Course' } }
+    Course: { id: increments, name: integer, image: string, price: integer, relationships: { belongsToMany: 'Teacher, Student, Direction' } }
+    Direction: { id: increments, name: string, description: text, relationships: { belongsToMany: 'Teacher, Course' } }
+    Teacher: { id: increments, name: string, image: string, description: text, column_5: integer, relationships: { belongsToMany: 'Student, Direction, Course' } }
+    CourseTeacher: { id: increments, course_id: 'integer index', teacher_id: 'integer index' }
+    CourseStudent: { id: increments, course_id: 'integer index', student_id: 'integer index' }
+    CourseDirection: { id: increments, course_id: 'integer index', direction_id: 'integer index' }
+    TeacherStudent: { id: increments, teacher_id: 'integer index', student_id: 'integer index' }
+    TeacherDirection: { id: increments, teacher_id: 'integer index', direction_id: 'integer index' }

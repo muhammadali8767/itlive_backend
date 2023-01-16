@@ -1,0 +1,63 @@
+models:
+    Cource:
+        id: increments
+        name: integer
+        image: string
+        price: integer
+        period: integer
+    Direction:
+        id: increments
+        name: string
+        description: text
+    CourceTeacher:
+        id: increments
+        cource_id: integer index foreign:cources.id
+        teacher_id: integer index foreign:users.id
+    CourceStudent:
+        id: increments
+        cource_id: integer index foreign:cources.id
+        studernt_id: integer index foreign:users.id
+    CourceDirection:
+        id: increments
+        cource_id: integer index foreign:cources.id
+        direction_id: integer index foreign:directions.id
+    TeacherDirection:
+        id: increments
+        teacher_id: integer index foreign:users.id
+        direction_id: integer index foreign:directions.id
+    User:
+        id: increments
+        is_student: integer
+        is_teacher: integer
+        name: string
+        image: string
+        about: string
+    Order:
+        id: increments
+        student_id: integer foreign:users.id
+        course_id: integer foreign:cources.id
+        amount: integer
+        payyed: integer
+        period: integer
+        payment_id: integer foreign:payments.id
+    Video:
+        id: increments
+        cource_id: integer foreign:cources.id
+        video: string
+        ordinal_number: integer
+    StudentVideo:
+        id: increments
+        student_id: integer foreign:users.id
+        video_id: integer foreign:videos.id
+        seen: integer
+        task_completed: integer
+    Payment:
+        id: increments
+        type: string
+        amount: integer
+        user_id: integer foreign:users.id
+        cource_id: integer foreign:cources.id
+    Task:
+        id: increments
+        video_id: integer foreign:videos.id
+        name: string

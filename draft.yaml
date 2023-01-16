@@ -1,0 +1,83 @@
+models:
+  Student:
+    id: increments
+    name: string
+    image: string
+    description: text
+    relationships:
+      belongsToMany: Teacher, Course
+
+  Course:
+    id: increments
+    name: integer
+    image: string
+    price: integer
+    relationships:
+      belongsToMany: Teacher, Student, Direction
+
+  Direction:
+    id: increments
+    name: string
+    description: text
+    relationships:
+      belongsToMany: Teacher, Course
+
+  Teacher:
+    id: increments
+    name: string
+    image: string
+    description: text
+    column_5: integer
+    relationships:
+      belongsToMany: Student, Direction, Course
+
+  CourseTeacher:
+    id: increments
+    course_id: id foreign
+    teacher_id: id foreign
+
+  CourseStudent:
+    id: increments
+    course_id: id foreign
+    student_id: id foreign
+
+  CourseDirection:
+    id: increments
+    course_id: id foreign
+    direction_id: id foreign
+
+  TeacherStudent:
+    id: increments
+    teacher_id: id foreign
+    student_id: id foreign
+
+  TeacherDirection:
+    id: increments
+    teacher_id: id foreign
+    direction_id: id foreign
+
+seeders: Post, Comment
+controllers:
+  Api\Teacher:
+    resource: api.index, api.show
+
+  Api\Direction:
+    resource: api.index, api.show
+
+  Api\Student:
+    resource: api.index, api.show
+
+  Api\Course:
+    resource: api.index, api.show
+
+  Admin\Teacher:
+    resource: api.index, api.show, api.store, api.update, api.destroy
+
+  Admin\Direction:
+    resource: api.index, api.show, api.store, api.update, api.destroy
+
+  Admin\Student:
+    resource: api.index, api.show, api.store, api.update, api.destroy
+
+  Admin\Course:
+    resource: api.index, api.show, api.store, api.update, api.destroy
